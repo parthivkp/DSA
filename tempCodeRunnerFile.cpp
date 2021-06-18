@@ -1,29 +1,45 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int convert(int n){
-    int newnum=0,place=1;
-    int k=n;
-     n=n%10;            
-       
-    while(k>0){ 
-         k=k/10;       
-        if(n==0){
-            newnum=newnum+(5*place);       
-        }else{
-            newnum=newnum+(n*place);
-        }
-        n=k%10;                 
-                  
-        place=place*10;    
-    }
+struct node{
+int data;
+node *left;
+node *right;
+node(int i){
+    data=i;
+    left=right=NULL;
+}
+};
 
-    return newnum;
+void printlvl(node *head,int k){
+    
+    if(head==NULL)
+    return;
+    if(k==0)
+    cout<<head->data<<" ";
+    printlvl(head->left,k-1);
+    printlvl(head->right,k-1);
+
+
+
+}
+
+
+void print(node *head){
+    if(head==NULL){
+        return;
+    }print(head->left);
+    cout<<(head->data)<<" ";
+    print(head->right);
 }
 
 int main(){
-    int number=1012100;
-    int newnumber=convert(number);
-    cout<<newnumber;
+node *head=new node(10);
+node *ll =new node (5);
+node *rr=new node(15);
+head->left=ll;
+head->right=rr;
+printlvl(head,1);
+
     return 0;
 }
