@@ -20,7 +20,7 @@ void findwater2(int arr[],int n){
 int lmax[n],rmax[n],res=0;
 lmax[0]=arr[0];
 for(int i=1;i<n;i++){
-    lmax[i]=max(lmax[i-1],arr[i]);
+    lmax[i]=max(lmax[i-1],arr[i]);  
 }
 /// this is tricky
 rmax[n-1]=arr[n-1];
