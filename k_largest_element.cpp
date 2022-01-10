@@ -19,7 +19,7 @@ void largestkelements(int arrs[],int n,int k){
 
 
 int main(){
- int arrs[]={81,1,2,3,4,5,6,33,66};
+ int arrs[]={81,33,1,2,3,4,5,6,33,66};
  int size=sizeof(arrs)/sizeof(arrs[0]);
  largestkelements(arrs,size,4);
 

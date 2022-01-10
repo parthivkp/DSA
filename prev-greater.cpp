@@ -14,12 +14,18 @@ for(int i=0;i<n;i++)
     k.push(arr[i]);
 }
 }
+bool greaters(const int &a,const int &b){
+    return a>b;
+}
 
 int main(){
-
+    priority_queue<int,vector<int>,greater<int>>k;
     int arr[]={1,12,4,5,23,11,2};
     int n=7;
- prevgreater(arr,n);
+    make_heap(arr,arr+7,greaters);
+    for (auto p:arr)
+    cout<<p<<" ";
+ //prevgreater(arr,n);
 
     return 0;
 }

@@ -27,7 +27,7 @@ void ArrayRotate (int A[], int n, int k)
    A[j]=A[d];
    j=d; 
   }
-  A[j]=temp;
+  A[j]=temp;   
  }
 }
 

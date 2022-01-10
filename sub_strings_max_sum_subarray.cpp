@@ -53,7 +53,7 @@ int main()
     int arr[] = {1,2,-1}; // input array
     int n = 3;
   //  PrintAllSubsets(arr,n);   
-   // auto iterator::it;
+   // auto iterator::it;m
     for(int i=0;i<k.size();i++){
         for(int x:k[i])
         cout<<x<<" ";

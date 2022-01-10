@@ -1,43 +1,69 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void findwater1(int arr[],int n){
+class tree{
+    public:
+int data;
+tree *left;
+tree *right;
+tree(int d){
+    left=right=NULL;
+    data=d;
+}
+tree(){
 
-int res=0;
-for(int i=1;i<n-1;i++){int lmax=arr[i];
-    for(int j=0;j<i;j++){
-     lmax=max(lmax,arr[j]);
-    }int rmax=arr[i];
-    for(int j=i+1;j<n;j++){
-     rmax=max(rmax,arr[j]);
+}
+
+};
+
+void display(tree *node){
+    if(node!=NULL){ 
+        display(node->left);
+        cout<<node->data<<" ";
+        display(node->right);
     }
-    res=res+min(rmax,lmax)-arr[i];
-} cout<<res;
+}
+tree * insert(tree *node,int d){
+    if(node==NULL){ 
+        tree *node1=new tree();
+        node1->data=d;
+        return node1;
+    }
+    else{cout<<node->data;
+        queue<tree*>q;
+        q.push(node);
+        while(!q.empty()){
+            tree *node=q.front();
+            q.pop();
+            if(node->left==NULL){
+                tree *n=new tree();
+                node->left=n;
+                n->data=d;
+                return n;
+            }else{
+                q.push(node->left);
+            }
+            if(node->right==NULL){
+                tree *n=new tree();
+                node->right=n;
+                n->data=d;
+                return n;
+            }else{
+                q.push(node->right);
+            }
 
-}
-//efficient solution
-void findwater2(int arr[],int n){
-int lmax[n],rmax[n],res=0;
-lmax[0]=arr[0];
-for(int i=1;i<n;i++){
-    lmax[i]=max(lmax[i-1],arr[i]);
-}
-/// this is tricky
-rmax[n-1]=arr[n-1];
-for(int i=n-2;i>=0;i--){
-    rmax[i]=max(rmax[i+1],arr[i]);
-}
-for(int i=1;i<n-1;i++){
-res=res+min(lmax[i],rmax[i])-arr[i];
-} cout<<res;
+        }return NULL;
+
+    }
 }
 
 int main(){
-int arr[]={5,0,6,2,3};
-
-int n=sizeof(arr)/sizeof(arr[0]);
-findwater2(arr,n);
-
-
-    return 0;
+tree *head=new tree(4);
+//head=insert(head,4);
+insert(head,5);
+insert(head,6);
+insert(head,7);
+//insert(head,6);
+display(head);
+return 0;
 }
